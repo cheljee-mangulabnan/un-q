@@ -5,14 +5,13 @@ import SearchResults from './SearchResults'
 
 const Search = () => {
   const [query, setQuery] = useState('')
-  const [querySubmitted, setQuerySubmitted] = useState(false)
   // Testing useFetch custom hook
+
   const navigate = useNavigate()
   const { data } = useFetch(query)
 
   const onSubmit = (e) => {
     e.preventDefault()
-    setQuerySubmitted(true)
     console.log(data.results)
     navigate(`/search?q=${query}`)
 
@@ -29,7 +28,7 @@ const Search = () => {
           className='h-12 outline-none rounded-3xl mx-[12rem] px-5 flex-1 border-2'
         />
       </form>
-      {querySubmitted && <SearchResults data={data.results} />}
+      {data && <SearchResults data={data.results} />}
     </>
   )
 }

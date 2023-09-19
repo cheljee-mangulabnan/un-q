@@ -9,7 +9,7 @@ const OldSearchResults = ({ data }) => {
     <div className='film-list'>
       {data.map((data) => (
         <div className='film-preview' key={data.id}>
-          <Link to={`/film/${data.id}`}>
+          <Link to={`/movies/${data.id}`}>
             <img
               src={`http://image.tmdb.org/t/p/original/${data.poster_path}`}
               alt={`${data.original_title} Poster`}
