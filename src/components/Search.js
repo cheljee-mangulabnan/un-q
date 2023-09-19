@@ -1,28 +1,35 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import useFetch from '../hooks/useFetch'
+import SearchResults from './SearchResults'
 
 const Search = () => {
   const [query, setQuery] = useState('')
-
-  const onChange = (e) => {
-    setQuery(e.target.value)
-  }
+  const [querySubmitted, setQuerySubmitted] = useState(false)
+  // Testing useFetch custom hook
+  const navigate = useNavigate()
+  const { data } = useFetch(query)
 
   const onSubmit = (e) => {
+    e.preventDefault()
+    setQuerySubmitted(true)
+    console.log(data.results)
+    navigate(`/search?q=${query}`)
+
     // Get query and pass it to function that handles your api requests
   }
   return (
     <>
-      <form action='' className='flex mx-16 mt-20'>
+      <form action='' onSubmit={onSubmit} className='flex mx-16 mt-20'>
         <input
           value={query}
-          onChange={onChange}
-          onSubmit={onSubmit}
+          onChange={(e) => setQuery(e.target.value)}
           type='search'
           placeholder='Enter keyword...'
           className='h-12 outline-none rounded-3xl mx-[12rem] px-5 flex-1 border-2'
         />
       </form>
-      <p>{query}</p>
+      {querySubmitted && <SearchResults data={data.results} />}
     </>
   )
 }

@@ -7,12 +7,20 @@ const Navbar = () => {
         <h1 className='font-bold text-[2.5rem]'>un-q</h1>
       </Link>
       <nav className=''>
-        <div className='links flex gap-5 text-lg font-bold'>
-          <Link to='/'>home</Link>
-          <Link to='/movies'>movies</Link>
-          <Link to='/series'>series</Link>
-          <Link to='/lists'>lists</Link>
-        </div>
+        <ul className='links flex gap-5 text-lg font-bold'>
+          <li>
+            <Link to='/'>home</Link>
+          </li>
+          <li>
+            <Link to='/movies'>movies</Link>
+          </li>
+          <li>
+            <Link to='/series'>series</Link>
+          </li>
+          <li>
+            <Link to='/lists'>lists</Link>
+          </li>
+        </ul>
       </nav>
     </div>
   )

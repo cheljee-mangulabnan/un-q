@@ -1,16 +1,26 @@
-// Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
+const axios = require('axios')
 const handler = async (event) => {
+  const { query } = event.queryStringParameters
+
+  const apiKey = process.env.REACT_APP_API_KEY
+  const url = `https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=false&language=en-US&page=1&${apiKey}`
+
   try {
-    const subject = event.queryStringParameters.name || 'World'
+    const { data } = await axios.get(url)
+
     return {
+      header: {
+        'Content-Type': 'application/json',
+      },
       statusCode: 200,
-      body: JSON.stringify({ message: `Hello ${subject}` }),
-      // // more keys you can return:
-      // headers: { "headerName": "headerValue", ... },
-      // isBase64Encoded: true,
+      body: JSON.stringify(data),
     }
   } catch (error) {
-    return { statusCode: 500, body: error.toString() }
+    const { status, statusText, headers, data } = error.response
+    return {
+      statusCode: status,
+      body: JSON.stringify({ status, statusText, headers, data }),
+    }
   }
 }
 
