@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Route, useNavigate } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
 import SearchResults from './SearchResults'
 
@@ -28,7 +28,6 @@ const Search = () => {
           className='h-12 outline-none rounded-3xl mx-[12rem] px-5 flex-1 border-2'
         />
       </form>
-      {data && <SearchResults data={data.results} />}
     </>
   )
 }
