@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
-import SearchResults from './SearchResults'
 
 const Search = () => {
   const [query, setQuery] = useState('')
@@ -12,8 +11,9 @@ const Search = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+
     console.log(data.results)
-    navigate(`/search?q=${query}`)
+    navigate(`/search?q=${query}`, { state: data, query })
 
     // Get query and pass it to function that handles your api requests
   }
@@ -28,7 +28,6 @@ const Search = () => {
           className='h-12 outline-none rounded-3xl mx-[12rem] px-5 flex-1 border-2'
         />
       </form>
-      {data && <SearchResults data={data.results} />}
     </>
   )
 }
