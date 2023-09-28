@@ -9,7 +9,7 @@ import SearchResults from './components/SearchResults'
 const App = () => {
   return (
     <>
-      <div className='app bg-cream h-screen font-anonymous-pro '>
+      <div className='app bg-cream  font-anonymous-pro '>
         <Navbar />
         <div className='content'>
           <Routes>

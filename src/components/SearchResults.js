@@ -6,7 +6,7 @@ const SearchResults = () => {
   return (
     <>
       {<h1>Search Results for: ${query}</h1>}
-      <div className='search-results grid grid-cols-6 mx-[10rem]'>
+      <div className='search-results grid grid-cols-5 mx-[10rem]'>
         {data &&
           data.results.map((data) => (
             <div className='film-preview  border-orange-600' key={data.id}>
@@ -14,7 +14,7 @@ const SearchResults = () => {
                 <img
                   src={`http://image.tmdb.org/t/p/original/${data.poster_path}`}
                   alt={`${data.original_title} Poster`}
-                  className=''
+                  className='p-3'
                 />
                 <div className='film-info '>
                   {data.media_type === 'movie' ? (
@@ -25,7 +25,7 @@ const SearchResults = () => {
                   ) : (
                     <>
                       <h3>{data.name}</h3>
-                      <p>{data.first_air_date}</p>
+                      <p>{data.first_air_date.slice(0, 4)}</p>
                     </>
                   )}
                 </div>
