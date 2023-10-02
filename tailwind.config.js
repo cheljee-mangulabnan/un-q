@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'anonymous-pro': ['Anonymous Pro'],
+        barlow: ['Barlow'],
       },
       colors: {
         cream: '#FDFAEC',

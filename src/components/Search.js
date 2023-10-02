@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Route, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
 
 const Search = () => {
@@ -13,7 +13,7 @@ const Search = () => {
     e.preventDefault()
 
     console.log(data.results)
-    navigate(`/search?q=${query}`, { state: data, query })
+    navigate(`/search?q=${query}`, { state: { data, query } })
 
     // Get query and pass it to function that handles your api requests
   }
